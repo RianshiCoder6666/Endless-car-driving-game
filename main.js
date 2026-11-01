@@ -105,16 +105,16 @@ function draw(){
 
         speed += 0.00000001
 
+         opCarSpawn();
+
         if(boosted === true){
             if(millis()-start>=5000){
                 speed = origspeed;
                 boosted = false
             }
-    }
+        }
 
     }
-
-   opCarSpawn();
 
     if(xp <= 0){
         gameState = END
@@ -259,7 +259,7 @@ function opCarSpawn(){
 
         //repair boxes  
         if(frameCount % 50 != 0 && frameCount%180 != 0 && frameCount%260 != 0 && frameCount%583 == 0){
-            repbox0 =new Sprite(0,0,30,30)
+            repbox0 =new Sprite(0,0,15,15)
             repbox0.addAni("repbox","./images/chest_repair/frame0000.png","./images/chest_repair/frame0001.png","./images/chest_repair/frame0002.png","./images/chest_repair/frame0003.png","./images/chest_repair/frame0004.png","./images/chest_repair/frame0005.png","./images/chest_repair/frame0006.png")
             repbox0.progress = 0
             repbox0.object = random(random_opcar_pos)
@@ -296,7 +296,7 @@ function opCarSpawn(){
 
         //nitro
         if(frameCount % 50 != 0 && frameCount%180 != 0 && frameCount%260 != 0 && frameCount%583 != 0 && frameCount % 913 == 0){
-            nitro0 =new Sprite(0,0,30,30)
+            nitro0 =new Sprite(0,0,20,20)
             nitro0.addAni("nitroboost","./images/gem_power/frame0000.png","./images/gem_power/frame0001.png","./images/gem_power/frame0002.png","./images/gem_power/frame0003.png","./images/gem_power/frame0004.png","./images/gem_power/frame0005.png","./images/gem_power/frame0006.png")
             nitro0.progress = 0
             nitro0.object = random(random_opcar_pos)
@@ -309,7 +309,7 @@ function opCarSpawn(){
                 let Progress = nitroP.progress * nitroP.progress
                 let ycoord = lerp(horizon, height, Progress)
                 let xcoord = lerp(nitroP.object.x_ini,nitroP.object.x_fin,Progress)
-                let scaling = lerp(1,2.5,Progress)
+                let scaling = lerp(0.7,2.1,Progress)
 
                 nitroP.x = xcoord
                 nitroP.y = ycoord
