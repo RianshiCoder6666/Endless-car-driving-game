@@ -19,8 +19,6 @@ let END = 0
 let gameState = PLAY
 
 const gameModal = document.getElementById('gameModal')
-const modalTitle = document.getElementById('modalTitle')
-const modalButton = document.getElementById('modalButton')
 
 function preload(){
     carImg = loadImage("./images/main_rear.png")
@@ -56,6 +54,11 @@ function setup(){
             xp = 100
             car.x = width/2
             car.y = horizon*2
+
+            if(boosted === true){
+                speed = origspeed
+                boosted = false
+            }
 
             gameModal.classList.remove('flex')
             gameModal.classList.add('hidden')
@@ -119,8 +122,6 @@ function draw(){
 
     if(gameState === END){
         spawnConstRoad();
-        //modalTitle.textContent = 'Game Over'
-       // modalButton.textContent = 'Play Again'
 
         gameModal.classList.remove('hidden')
         gameModal.classList.add('flex')
