@@ -1,5 +1,5 @@
 var horizon;
-let speed = 0.005 //this advancing will depend on car's speed btw
+let speed = 0.005
 let tracker = 0;
 var carImg,obstacleImg;
 let obcarImages = []
@@ -48,8 +48,23 @@ function setup(){
                 coinP.remove();
             }
 
+            for(let obstacleP of obstacles){
+                obstacleP.remove();
+            }
+
+            for(let repboxP of repair_boxes){
+                repboxP.remove();
+            }
+
+            for(let nitroP of nitros){
+                nitroP.remove();
+            }
+
             cars = []
             coins = []
+            obstacles = []
+            repair_boxes = []
+            nitros = []
             score = 0
             xp = 100
             car.x = width/2
@@ -114,11 +129,12 @@ function draw(){
             }
         }
 
+        if(xp <= 0){
+            gameState = END
+        }
+
     }
 
-    if(xp <= 0){
-        gameState = END
-    }
 
     if(gameState === END){
         spawnConstRoad();
