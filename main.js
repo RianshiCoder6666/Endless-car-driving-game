@@ -69,6 +69,7 @@ function setup(){
             xp = 100
             car.x = width/2
             car.y = horizon*2
+            tracker = 0
 
             if(boosted === true){
                 speed = origspeed
